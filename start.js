@@ -4,6 +4,8 @@ let app = require('./app');
 let http = require('http');
 
 let debug = require('debug');
+// 数据库
+let pool = require('./config/configDB.js')
 
 
 // 可用CPU数量
