@@ -3,6 +3,35 @@ node start
 
 搭建了 express 服务器
 
+总结问题：
+1. 导入和导出
+    1)在引入的文件必须写上 .Class
+    exports.Class = handelUser  
+    let QRCode = require('../models/QRCode').Class;
+2. 定义类
+    有 set() 就要有get()
+    get username() { return this._username; }
+    set username(value) { this._username = value; }
+采坑：
+1.数据库字段名与model字段名不一致。wtm.....
+  数据库字段名、model定义字段名、定义属性名字（set、get）要一致。
+2.post>body   get>parama
+  当post请求时，选准格式
+3.当使用 findByID() 时,需要把id 放在第一条。
+
+临时密码 UdmIJa8V=Upq
+mac用brew安装mysql,设置初始密码  //
+https://www.jianshu.com/p/3996f6a2fa45
+
+安装mysql:
+brew install mysql
+
+启动mysql:
+mysql.server start
+
+设置密码:
+mysql_secure_installation
+
 文件介绍
 routes 文件是 接受用户传过来的数据
 DATA 文件是返回数据的来源
