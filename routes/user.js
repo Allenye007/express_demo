@@ -3,6 +3,9 @@ const router = express.Router();
 
 let User = require('../models/User').Class;
 
+const {handelSetRedis, handelGetRedis} = require('../util/redis');
+
+
 const fs = require('fs');
 
 //  模块的默认操作会根据 Node.js 应用程序运行的操作系统的不同而变化。 
@@ -119,6 +122,10 @@ router.get('/qrCodeList', (req, res) => {
 router.get('/showQrCode', (req, res) => {
     var uid = req.query.uid;
     var user = new User();
+    handelGetRedis(req.body.key, (err, data) => {
+        console.log(err, 1212);
+        console.log(data, 12)
+    })
     user.getShowFirsrQRCode(uid, (err, data) => {
         if(err) {
             res.send({

@@ -11,6 +11,10 @@ const addQrCode = require('./routes/user');
 const deleteQrCode = require('./routes/user');
 const qr = require('./routes/qrCode');
 
+// 纤细美
+const xxmUser = require('./routes/xxmUser');
+
+
 // 登录
 const login = require('./routes/login');
 
@@ -22,6 +26,9 @@ app.use('/demo', userList);
 app.use('/demo', bigAge);
 app.use('/demo', addQrCode);
 app.use('/demo', deleteQrCode);
+
+app.use('/demo', xxmUser);
+
 
 
 

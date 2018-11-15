@@ -1,9 +1,13 @@
-启动
+启动项目
 node start
-
 搭建了 express 服务器
 
-总结问题：
+
+启动 redis (操作数据库)
+redis-server
+
+**总结问题**：
+
 1. 导入和导出
     1)在引入的文件必须写上 .Class
     exports.Class = handelUser  
@@ -12,15 +16,53 @@ node start
     有 set() 就要有get()
     get username() { return this._username; }
     set username(value) { this._username = value; }
-采坑：
-1.数据库字段名与model字段名不一致。wtm.....
-  数据库字段名、model定义字段名、定义属性名字（set、get）要一致。
-2.post>body   get>parama
-  当post请求时，选准格式
-3.当使用 findByID() 时,需要把id 放在第一条。
+3. 
+4. 
+
+
+  /* .swiper-slide-active {
+    margin-right: 0!important;
+  }
+
+  .swiper-pagination-bullet-active
+  */
+
+  
+**采坑**
+1. 数据库字段名与model字段名不一致。TMD.....
+      数据库字段名、model定义字段名、定义属性名字（set、get）要一致。
+2. post>body   get>parama
+      当post请求时，选准格式
+3. 当使用 findByID() 时,需要把id 放在第一条。
+4. 
+5. 
+
+**npm包：**
+
+1. uuid：生成一个短的key 可以设置时间。
+
+   ```
+   const uuidv1 = require('uuid/v1');
+   uuidv1(); // ⇨ '45745c60-7b1a-11e8-9c9c-2d42b21b1a3e'
+   ```
+
+2. shortid
+
+   ```
+   console.log(shortid.generate());
+   // PPBqWA9
+   ```
+
+3. ioredis  操作数据库。
+
+4. 
+
+
+
+
 
 临时密码 UdmIJa8V=Upq
-mac用brew安装mysql,设置初始密码  //
+mac用brew安装mysql,设置初始密码
 https://www.jianshu.com/p/3996f6a2fa45
 
 安装mysql:

@@ -1,7 +1,7 @@
 
 let workers = require('os').cpus().length;
 let host = 'localhost';
-
+// 配置DB
 const config = {
     dbName:'demo',
     user:'root',
@@ -13,8 +13,14 @@ const config = {
     acquire:30000,
     idle:10000
 };
+// 配置Redis
+const redisConfig = {
+    host:'localhost',
+    port:'6379'
+};
 
 module.exports = {
     host,
-    config
+    config,
+    redisConfig
 };
