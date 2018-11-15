@@ -7,6 +7,8 @@ let User = require('../models/XxmUser').Class;
 
 router.post('/regist', (req, res) => {
     var P = req.body;
+    // 缺判断
+    if ( P ) {};
     const user = new User();
     user.handelRegist(P, (err, data) => {
         if(err) {
@@ -22,6 +24,8 @@ router.post('/regist', (req, res) => {
         }
     })
 })
+
+
 
 
 
