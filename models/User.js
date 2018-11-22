@@ -156,5 +156,10 @@ class handelUser {
             }
         })
     }
+
+    // 考试
+    getDaAn() {
+        
+    }
 }
 exports.Class = handelUser; // 用于封装方法
