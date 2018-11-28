@@ -4,6 +4,8 @@ var Sequelize = require('sequelize');
 // 引配置
 let sequelizeInstance = require('../config/configDB.js').sequelize;
 
+const Op = Sequelize.Op;
+
 // 定义字段名
 const LianJia = sequelizeInstance.define('lianJiaDB', {
     // 定义字段
@@ -129,6 +131,53 @@ class handelLianJia {
             cb(E, null);
         })
     }
+    // 根据小区名字查询  单个查询
+    getByName(P, cb) {
+        // 如果使用findone只会返回数据的第一条（当查询的条件不是一条时）
+        return LianJia.findAll({
+            where: {
+                title: {
+                    [Op.like]: '%' + P.title +'%'
+                }
+            }
+        })
+        .then(R=> {
+            cb(null, R);
+        })
+        .catch(E => {
+            cb(E, null);
+        })
+    }
+    // 根据￥/平方米 的区间 查询  price
+    getByMonery(P, cb) {
+        return LianJia.findAll({
+            where: {
+                price: {
+                    // 在区间查询   大于等于小的   小于等于大的
+                    // [Op.lte]: P.endMonery,   // 结束价
+                    // [Op.gte]: P.startMonery,  // 起始价
+                    [Op.between]: [P.startMonery, P.endMonery], // 区间  1-6 之间
+                }
+            }
+        })
+        .then(R => {
+            cb(null, R);
+        })
+        .catch(E => {
+            cb(E, null);
+        })
+    }
+    // 通过ID查询
+    getById(P, cb) {
+        return LianJia.findById(P.id)
+            .then(R => {
+                cb(null, R);
+            })
+            .catch(E => {
+                cb(E, null);
+            })
+    }
+
 }
 
 exports.Class = handelLianJia
